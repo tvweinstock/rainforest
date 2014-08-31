@@ -4,7 +4,7 @@
 
 <% @products.each do |products| %>
 
-<%= products.name %>, <%= products.description %>
-<%= products.formatted_price %>
+<p><%= products.name %>: <%= products.description %></p>
+<p>$<%= products.formatted_price %></p>
 
 <% end %>
