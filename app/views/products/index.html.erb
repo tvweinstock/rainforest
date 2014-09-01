@@ -11,19 +11,22 @@
     <th></th>
   </tr>
 
-  <% @products.each do |products| %>
+  <% @products.each do |product| %>
 
-  <tr></tr>
+  <tr>
 
-  <td><%= products.name %></td>
-  <td><%= products.description %></td>
-  <td>$<%= products.formatted_price %></td>
-  <!-- <td><%# link_to 'Show', product %></td> -->
-  <!-- <td><%# link_to 'Edit', edit_product_path(product) %></td>
-  <td><%# link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?'} %></td>
- -->
+    <td><%= product.name %></td>
+    <td><%= product.description %></td>
+    <td>$<%= product.formatted_price %></td>
+    <td><%= link_to 'Show', product %></td>
+    <td><%= link_to 'Edit', edit_product_path(product) %></td>
+    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?'} %></td>
+  </tr>
   <% end %>
 
 </table>
 
+
+
 <%= link_to "New Product", new_product_path %>
+

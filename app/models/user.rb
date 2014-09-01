@@ -5,4 +5,10 @@ class User < ActiveRecord::Base
   has_many :products, through: :reviews
 
   validates :name, presence: true
+
+  private
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :name)
+    
+  end
 end
