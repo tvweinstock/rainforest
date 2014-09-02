@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :ensure_logged_in, except: [:index, :show]
+
   def index
     @products = Product.all
   end
@@ -42,7 +44,7 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    redirect_to product_path
+    redirect_to products_path
   end
 
   private
