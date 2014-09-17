@@ -7,8 +7,11 @@ class ProductsController < ApplicationController
       else
         Product.all
       end
-      if request.xhr?
-        render @products
+
+      respond_to do |format|
+        format.html
+        format.js
+        format.json { render :json => @products }
       end
     end
 
