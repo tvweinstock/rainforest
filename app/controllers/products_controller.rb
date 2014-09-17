@@ -7,6 +7,9 @@ class ProductsController < ApplicationController
       else
         Product.all
       end
+      if request.xhr?
+        render @products
+      end
     end
 
     def show
