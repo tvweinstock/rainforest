@@ -1,4 +1,6 @@
 $(document).on('page:load ready', function() {
+  var working = false;
+
   $('#search-form').submit(function(event) {
     event.preventDefault();
     var searchValue = $('#search').val();
@@ -7,31 +9,20 @@ $(document).on('page:load ready', function() {
 
   });
 
-  // $(".pagination a").on('click', function(event){
-  //   var self = $(this)
-  //   var href = self.attr('href');  
-  //   event.preventDefault();
 
-  //   $.ajax({
-  //     type: 'GET',
-  //     dataType: 'html',
-  //     url: href,
-
-  //   }).done(function(data) {
-  //     $('#products').html(data);
-  //   });
-  // });
   $(window).on('scroll', function(){
-    if ( $(window).scrollTop() > ($(document).height() * 0.65 ) ) {
-      var nextPage = $('.pagination .next a');
+    if (!working) {
+      if ( $(window).scrollTop() > ($(document).height() * 0.65 )  ) {
+        working = true;
+        var nextPage = $('.pagination .next a');
 
-      if ( nextPage.length > 0 ) {
-      var href = nextPage.attr('href');
-      $.getScript(href);
+        if ( nextPage.length > 0 ) {
+        var href = nextPage.attr('href');
+        $.getScript(href);
+        
+        }
       }
-
-      
-    };
+    }
   });
 });
 
