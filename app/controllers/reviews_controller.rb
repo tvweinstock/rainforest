@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_filter :load_product
+  before_filter :load_product, except: [:destroy]
   before_filter :ensure_logged_in, only: [:create, :destroy]
 
   def show
@@ -25,6 +25,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
+    redirect_to @review.product, notice: "Review Deleted!"
   end
 
   private

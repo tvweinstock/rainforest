@@ -5,6 +5,11 @@
     <% if review.user != nil %>
     <em> by <%= review.user.name %></em>
     Added on: <%= review.created_at %>
+     <% if current_user && current_user.id == review.id %>
+      <%= link_to "Delete", review_path(review), method: :delete %>
+     <% end -%>
     <% end %>
+
+
   </p>
 </div>  

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # get 'reviews/destroy'
 
   resources :products do
-    resources :reviews, only: [:show, :create, :destroy]
+    resources :reviews, only: [:show, :create, :destroy], shallow: true
   end
 
   resources :users, only: [:new, :create]
