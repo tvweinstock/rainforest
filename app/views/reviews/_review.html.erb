@@ -1,15 +1,17 @@
-<div class="review">
+<% unless review.new_record? %>
+<div class="review" data-review-id="<%= review.id %>">
   <p>
     <%= review.comment %>
     <br>
     <% if review.user != nil %>
     <em> by <%= review.user.name %></em>
     Added on: <%= review.created_at %>
-     <% if current_user && current_user.id == review.id %>
-      <%= link_to "Delete", review_path(review), method: :delete %>
-     <% end -%>
+       <% if current_user && current_user.reviews.include?(review) %>
+        <%= link_to "Delete", review_path(review), :method => :delete, :remote => true %>
+       <% end %>
     <% end %>
 
 
   </p>
 </div>  
+<% end %>
